@@ -2,7 +2,31 @@ const inventory = newInventory()
 move(inventory).to(0, 0)
 
 const character = newImage('assets/green-character/static.gif')
-move(character).to(100, 250)
+
+let direction = null;
+let x = 100;
+let y = 250;
+
+function moveCharacter() {
+// If direction is west, the variable x now has the value of x-1
+  if(direction === 'west') {
+    x = x - 1
+  }
+  if(direction === 'north') {
+    y = y + 1
+  }
+  if(direction === 'east') {
+    x = x + 1
+  }
+  if(direction === 'south') {
+    y = y - 1
+  }
+  character.style.left = x + 'px'
+  character.style.left = y + 'px'
+}
+
+//passing the moveCharacter function into set Interval and telling it to move every ms
+setInterval(moveCharacter, 1)
 
 
 move(newImage('assets/tree.png')).to(200, 450)
